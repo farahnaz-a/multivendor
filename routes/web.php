@@ -1,21 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 
-
+// Frontend Controller
 Route::get('/', [FrontendController::class, 'index']);
 
-Route::get('/about', [FrontendController::class, 'about'])->middleware(['auth', 'verified']); 
-
-Route::get('/contact', [FrontendController::class, 'contact']);
 
 
-
-
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+//Admin Controller
+Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
