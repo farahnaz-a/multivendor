@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -345,10 +344,48 @@
                 </div>
                 <div id="main-wrapper">
                    <div class="row">
-                       <div class="col-lg-12">
-                           <h1 class="text-center">
-                               Welcome TO Admin Pannel
-                           </h1>
+                       <div class="col-lg-12 m-auto">
+                        <div class="card d-flex justify-content-space-between">
+                            <div class="card-header float-left ">
+                                <h1 class="d-inline-block">Users</h1>
+                            </div>
+                            <div class="float-right">
+                                <p class="float-right d-inline-block">Total Users: {{ $total }}</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <tr>
+                                            <th>Sl.</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Registered at</th>
+                                            <th>Verified</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        @foreach ($users as $key => $user) 
+                                        <tr>
+                                            <td>{{ $users->firstItem() + $key }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->created_at->diffForHumans() }}</td>
+                                            <td> 
+                                                @if($user->email_verified_at)
+                                                     <span class="badge badge-pill badge-success">Yes</span>
+                                                @else 
+                                                     <span class="badge badge-pill badge-danger">No</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="" class="btn btn-danger">Ban</a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
+                            {{ $users->links() }}
+                        </div>
                        </div>
                    </div>
                 </div><!-- Main Wrapper -->
@@ -397,7 +434,6 @@
         <script src="{{ asset('dashboard_assets/plugins/waves/waves.min.js/') }}"></script>
         <script src="{{ asset('dashboard_assets/plugins/3d-bold-navigation/js/main.js/') }}"></script>
         <script src="{{ asset('dashboard_assets/plugins/waypoints/jquery.waypoints.min.js/') }}"></script>
-        <script src="{{ asset('dashboard_assets/plugins/toastr/toastr.min.js/') }}"></script>
         <script src="{{ asset('dashboard_assets/plugins/flot/jquery.flot.min.js/') }}"></script>
         <script src="{{ asset('dashboard_assets/plugins/flot/jquery.flot.time.min.js/') }}"></script>
         <script src="{{ asset('dashboard_assets/plugins/flot/jquery.flot.symbol.min.js/') }}"></script>

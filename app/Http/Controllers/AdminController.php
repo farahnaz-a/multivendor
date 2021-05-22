@@ -3,18 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminController extends Controller
 {
 
-    //Constructor
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-
-    public function index() {
-        return view('admin/index');
+    /**
+     *  Application Statistic
+     */
+    public function index()
+    {
+        $users = User::paginate(10);
+        $total = User::count();
+        return view('admin.index', compact('users', 'total'));
     }
 }
