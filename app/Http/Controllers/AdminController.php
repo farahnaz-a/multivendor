@@ -19,10 +19,17 @@ class AdminController extends Controller
     /**
      *  Application Statistic
      */
+
     public function index()
     {
-        $users = User::paginate(10);
+
+        $users = User::paginate(2);
         $total = User::count();
-        return view('admin.index', compact('users', 'total'));
+
+        return view('admin.index', compact('users' , 'total'));
+
+        // $users = User::paginate(10);
+        // $total = User::count();
+        // return view('admin.index', compact('users', 'total'));
     }
 }
