@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -23,13 +24,10 @@ class AdminController extends Controller
     public function index()
     {
 
-        $users = User::paginate(2);
+        $users = User::where('id', '!=', Auth::id())->paginate(2);
         $total = User::count();
 
         return view('admin.index', compact('users' , 'total'));
 
-        // $users = User::paginate(10);
-        // $total = User::count();
-        // return view('admin.index', compact('users', 'total'));
     }
 }
