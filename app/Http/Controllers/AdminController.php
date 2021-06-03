@@ -20,7 +20,6 @@ class AdminController extends Controller
     /**
      *  Application Statistic
      */
-
     public function index()
     {
 

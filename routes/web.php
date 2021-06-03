@@ -16,3 +16,4 @@ Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 //Faq Controller
 Route::get('/faq', [FaqController::class, 'index']);
+Route::post('/faq-store', [FaqController::class, 'store']);

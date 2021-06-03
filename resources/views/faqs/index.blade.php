@@ -2,25 +2,46 @@
 
 
 @section('title')
-    {{ config('app.name') }} | Freaquenty Asked Questions
+{{ config('app.name') }} | Freaquenty Asked Questions
 @endsection
 
 @section('content')
 <div class="row">
+
     <div class="col-md-6">
         <div class="card">
             <div class="card-header text-center">
                 <h4>FAQ Create</h4>
+
+                @if ($errors->all())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
             </div>
-            <div class="card-body">
-                <div class="p-2">
-                    <label for="question">Question</label>
-                    <input name="question" id="question" type="text" placeholder="" class="form-control">
-                </div>
-                <div class="p-2">
-                    <label for="answer">Answer</label>
-                    <textarea name="answer" id="answer" class="form-control"></textarea>
-                </div>
+            <div class="card-body p-3">
+                <form action="{{ url('/faq-store') }}" method="POST">
+                    @csrf
+                    <div class="py-2">
+                        <label for="question">Question</label>
+                        <input name="question" id="question" type="text" placeholder="Enter Question" class="form-control">
+                    </div>
+                    <div class="py-2">
+                        <label for="answer">Answer</label>
+                        <textarea name="answer" id="answer" placeholder="Enter Answer" class="form-control"></textarea>
+                    </div>
+                    <div class="py-2">
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -38,12 +59,14 @@
                             <th>Answer</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>What is your name?</td>
-                            <td>Admin</td>
-                            <td><a href="" class=" btn-sm btn-danger">Delete</a></td>
-                        </tr>
+                        @foreach ($faqs as $key => $faq)
+                            <tr>
+                                <td>1</td>
+                                <td>{{ $faq->question }}</td>
+                                <td>{{ $faq->answer }}</td>
+                                <td><a href="" class=" btn-sm btn-danger">Delete</a></td>
+                            </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
