@@ -15,6 +15,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -23,7 +24,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        $users = User::where('id', '!=', Auth::id())->paginate(2);
+        $users = User::where('id', '!=', Auth::id())->paginate(10);
         $total = User::count();
 
         return view('admin.index', compact('users' , 'total'));

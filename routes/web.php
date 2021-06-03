@@ -16,4 +16,7 @@ Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 //Faq Controller
 Route::get('/faq', [FaqController::class, 'index']);
+Route::get('/faq-edit/{id}', [FaqController::class, 'edit']);
+Route::post('/faq-update', [FaqController::class, 'update']);
+Route::get('/faq-delete/{id}', [FaqController::class, 'delete']);
 Route::post('/faq-store', [FaqController::class, 'store']);

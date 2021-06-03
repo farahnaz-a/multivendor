@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FaqFormRequest;
 use App\Models\Faq;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class FaqController extends Controller
     public function __construct()
     {
         $this-> middleware('auth');
+        $this-> middleware('verified');
     }
 
 
@@ -23,20 +25,15 @@ class FaqController extends Controller
      */
     public function index(){
 
-        $faqs = Faq::all();
+        $faqs = Faq::paginate(5);
         return view('faqs.index', compact('faqs'));
     }
 
     /**
      * Faq Store
      */
-    public function store(Request $request){
-
-        $request->validate([
-            'question' => 'required|unique:faqs',
-            'answer' => 'required',
-        ]);
-
+    public function store(FaqFormRequest $request)
+    {
         Faq::insert([
             'question'    => $request->question,
             'answer'      => $request->answer,
@@ -47,4 +44,42 @@ class FaqController extends Controller
         
     }
 
+    /**
+     * Faq Edit
+     */
+    public function edit($id)
+    {
+        $faq = Faq::find($id);
+
+        return view('faqs.edit', compact('faq'));
+    }
+
+    /**
+     * Faq Update
+     */
+    public function update(Request $request)
+    {
+       $faq = Faq::find($request->id); 
+        
+       $faq->update([
+        'question'    => $request->question, 
+        'answer'      => $request->answer,
+        'updated_at'  => Carbon::now(),
+       ]);
+
+       return back()->withSuccess('Faq updated successfully');
+
+    }
+
+    /**
+     * Faq Delete 
+     */
+    public function delete($id)
+    {
+       Faq::find($id)->delete();
+       return back()->withSuccess('Faq deleted');
+    }
+
+
+// END
 }
