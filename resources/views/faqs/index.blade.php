@@ -73,7 +73,7 @@
                                 
                                 <td>
                                     <a href="" class="btn-sm btn-primary">View</a>
-                                    <a href="{{ url('/faq-edit') }}/{{ $faq->id }}" class="btn-sm btn-warning">Edit</a>
+                                    <a href="{{ route('faq.edit', $faq->id) }}" class="btn-sm btn-warning">Edit</a>
                                     <a href="{{ url('/faq-delete') }}/{{ $faq->id }}" class="btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>

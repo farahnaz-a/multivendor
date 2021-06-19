@@ -114,9 +114,20 @@
                             </a>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+
+
+                            <form action="{{ route('logout') }}" method="POST">
+                              @csrf  
+
+
+                              <a   class="dropdown-item notify-item" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
                                 <i class="zmdi zmdi-power"></i> <span>Logout</span>
-                            </a>
+                             </a>
+
+                            </form>
+
+
+                           
 
                         </div>
                     </li>
@@ -153,12 +164,16 @@
                     <ul class="metismenu" id="side-menu">
                         <li class="menu-title">Navigation</li>
                         <li>
-                            <a href="{{ url('/dashboard') }}"> <i class="fi-air-play"></i><span> Dashboard </span>
+                            <a href="{{ route('dashboard') }}"> <i class="fi-air-play"></i><span> Dashboard </span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ url('/faq') }}"><i class="fi-help"></i><span> FAQ </span></a>
+                            <a href="{{ route('categories.index') }}"><i class="fi-help"></i><span> Category </span></a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('faq.index') }}"><i class="fi-help"></i><span> FAQ </span></a>
                         </li>
 
                         <li>
