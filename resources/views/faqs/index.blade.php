@@ -7,12 +7,10 @@
 
 @section('content')
 <div class="row">
-
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header text-center">
-                <h4>FAQ Create</h4>
-
+            <div class="card-header">
+                <h3 class="text-center">FAQ Create</h3>
                 @if ($errors->all())
                     @foreach ($errors->all() as $error)
                         <div class="alert alert-danger">
@@ -27,24 +25,24 @@
                 @endif
 
             </div>
-            <div class="card-body p-3">
+            <div class="card-body">
                 <form action="{{ url('/faq-store') }}" method="POST">
                     @csrf
-                    <div class="py-2">
+                    <div class="form-group">
                         <label for="question">Question</label>
                         <input name="question" id="question" value="{{ old('question') }}"  type="text" placeholder="Enter Question" class="form-control">
                         @error('question') 
                         <small class="text-danger"> {{ $message }} </small>
                         @enderror
                     </div>
-                    <div class="py-2">
+                    <div class="form-group">
                         <label for="answer">Answer</label>
                         <textarea name="answer" id="answer" placeholder="Enter Answer" class="form-control">{{ old('answer') }}</textarea>
                         @error('answer') 
                         <small class="text-danger"> {{ $message }} </small>
                         @enderror
                     </div>
-                    <div class="py-2">
+                    <div class="form-group">
                         <button class="btn btn-success" type="submit">Submit</button>
                     </div>
                 </form>
@@ -54,7 +52,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header text-center">
-                <h4>FAQ List</h4>
+                <h3>FAQ List</h3>
             </div>
             <div class="card-body">
                 <div class="table table-responsive">
@@ -72,8 +70,8 @@
                                 <td>{{ $faq->answer }}</td>
                                 
                                 <td>
-                                    <a href="" class="btn-sm btn-primary">View</a>
                                     <a href="{{ route('faq.edit', $faq->id) }}" class="btn-sm btn-warning">Edit</a>
+                                    <a href="{{ route('faq.view', $faq->id) }}" class="btn-sm btn-primary">View</a>
                                     <a href="{{ url('/faq-delete') }}/{{ $faq->id }}" class="btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>

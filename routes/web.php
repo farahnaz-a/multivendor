@@ -17,10 +17,11 @@ Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 //Faq Controller
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+Route::post('/faq-store', [FaqController::class, 'store'])->name('faq.store');
 Route::get('/faq/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
-Route::post('/faq-update', [FaqController::class, 'update']);
-Route::get('/faq-delete/{id}', [FaqController::class, 'delete']);
-Route::post('/faq-store', [FaqController::class, 'store']);
+Route::post('/faq-update', [FaqController::class, 'update'])->name('faq.update');
+Route::get('/faq-view/{id}', [FaqController::class, 'view'])->name('faq.view');
+Route::get('/faq-delete/{id}', [FaqController::class, 'delete'])->name('faq.delete');
 
 
 // CategoryController 

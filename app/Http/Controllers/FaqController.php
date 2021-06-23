@@ -71,6 +71,15 @@ class FaqController extends Controller
 
     }
 
+     /**
+     * Faq view
+     */
+    public function view($id){
+
+        $views = Faq::find($id);
+        return view('faqs.view', compact('views') );
+    }
+
     /**
      * Faq Delete 
      */
