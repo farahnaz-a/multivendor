@@ -2,7 +2,7 @@
 
 
 @section('title')
-{{ config('app.name') }} | Categories
+{{ config('app.name') }} | Sub Categories
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header text-center">
-                <h4>Category Create</h4>
+                <h4>Sub Category Create</h4>
 
                 @if (session('success'))
                     <div class="alert alert-success">
@@ -21,19 +21,24 @@
 
             </div>
             <div class="card-body p-3">
-                <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('subcategories.store') }}" method="POST">
                     @csrf
                     <div class="py-2">
-                        <label for="name">Category name</label>
-                        <input name="name" id="name" value="{{ old('name') }}"  type="text" placeholder="Enter category name" class="form-control">
+                        <label for="name">Sub Category name</label>
+                        <input name="name" id="name" value="{{ old('name') }}"  type="text" placeholder="Enter Sub Category name" class="form-control">
                         @error('name') 
                         <small class="text-danger"> {{ $message }} </small>
                         @enderror
                     </div>
                     <div class="py-2">
-                       <label for="image">Category image</label>
-                       <input type="file" class="form-control" name="image">
-                       @error('image') 
+                       <label for="category_id">Select Category</label>
+                       <select class="form-control" name="category_id" id="category_id">
+                           <option value="">-Select your category-</option>
+                           @foreach ($categories as $category)
+                               <option  value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
+                           @endforeach
+                       </select>
+                       @error('category_id') 
                        <small class="text-danger"> {{ $message }} </small>
                        @enderror
                     </div>
@@ -47,7 +52,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header text-center">
-                <h4>Category List</h4>
+                <h4>Sub Category List</h4>
             </div>
             <div class="card-body">
                 <div class="table table-responsive">
@@ -55,26 +60,20 @@
                         <tr>
                             <th>Sl.</th>
                             <th>Name</th>
-                            <th>Image</th>
-                            <th>Added by</th>
+                            <th>Category</th>
                             <th>Action</th>
                         </tr>
-                        @foreach ($categories as $category)
+                        @foreach ($subcategories as $subcategory)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ ucfirst($category->name) }}</td>
+                                <td>{{ $subcategory->name }}</td>
+                                <td>{{ $subcategory->getCategory->name }}</td>
                                 <td>
-                                    <img width="100" src="{{ asset('uploads/categories') }}/{{ $category->image }}" alt="">
-                                </td>
-                                <td>
-                                    {{-- {{ \App\Models\User::find($category->added_by)->name }} --}}
-                                    {{ $category->getUser->name }}
-                                </td>
-                                <td>
-                                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>
+                                    <a href=""></a>
                                 </td>
                             </tr>
                         @endforeach
+                       
                     </table>
                 </div>
             </div>

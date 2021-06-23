@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Carbon\Carbon;
 use Image;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -43,7 +44,8 @@ class CategoryController extends Controller
 
         $id = Category::insertGetId([
             'name'       => $request->name,
-            'image'      => $request->image, 
+            'image'      => $request->image,
+            'added_by'   => Auth::id(), 
             'created_at' => Carbon::now(),
         ]);
 

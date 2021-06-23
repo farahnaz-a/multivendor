@@ -392,7 +392,7 @@
                             </g>
                         </g>
                             </svg></span>
-                        <h2 class="brand-text">Vuexy</h2>
+                        <h2 class="brand-text">Adwareton</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
             </ul>
@@ -403,7 +403,21 @@
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Email">Frontend</span></a></li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i></li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Admin Pannel</span></a></li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('categories.index') }}"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Category</span></a></li>
+
+                <li class=" nav-item">
+                    <a class="d-flex align-items-center" href="{{ route('categories.index') }}">
+                        <i data-feather="message-square"></i>
+                        <span class="menu-title text-truncate" data-i18n="Chat">Category</span>
+                    </a>
+                </li>
+                <li class=" nav-item">
+                    <a class="d-flex align-items-center" href="{{ route('subcategories.index') }}">
+                        <i data-feather="message-square"></i>
+                        <span class="menu-title text-truncate" data-i18n="Chat">Sub Category</span>
+                    </a>
+                </li>
+
+
                 <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('faq.index') }}"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Faq</span></a></li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Calendar</span></a></li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a></li>
@@ -433,18 +447,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrumb-right">
-                        <div class="dropdown"><button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="app-todo.html"><i class="mr-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a>
-                                <a class="dropdown-item" href="app-chat.html"><i class="mr-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a>
-                                <a class="dropdown-item" href="app-email.html"><i class="mr-1" data-feather="mail"></i><span class="align-middle">Email</span></a>
-                                <a class="dropdown-item" href="app-calendar.html"><i class="mr-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+
             </div>
             <div class="content-body">
                 <div class="row">

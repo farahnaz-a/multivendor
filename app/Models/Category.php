@@ -9,4 +9,10 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'image'];
+
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'added_by', 'id');
+    }
+
 }
