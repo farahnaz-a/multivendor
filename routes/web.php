@@ -38,3 +38,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('subcategories', SubCategoryController::class);
 
 });
+
+// User Prefix 
+Route::group(['prefix' => 'user'], function () {
+
+        // User dashboard
+        Route::get('/dashboard', function () {
+
+                echo "user dashboard coming soon";
+        })->name('user.dashboard');
+
+});
