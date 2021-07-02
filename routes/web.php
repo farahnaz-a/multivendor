@@ -33,9 +33,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/categories-store', [CategoryController::class, 'store'])->name('categories.store');
         Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
         Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
+        Route::get('/categories/{id}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
 
         // SubCategoryController
-        Route::resource('subcategories', SubCategoryController::class);
+        Route::resource('subCategories', SubCategoryController::class);
 
 });
 

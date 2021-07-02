@@ -6,9 +6,15 @@
 @endsection
 
 @section('content')
+
+@if(session('warning'))
+<div class="alert alert-warning">
+    {{ session('warning') }}
+</div>
+@endif
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-header text-center">
                 <h4>Category Create</h4>
@@ -44,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-header text-center">
                 <h4>Category List</h4>
@@ -55,6 +61,7 @@
                         <tr>
                             <th>Sl.</th>
                             <th>Name</th>
+                            <th>Subcat</th>
                             <th>Image</th>
                             <th>Added by</th>
                             <th>Action</th>
@@ -64,6 +71,9 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ ucfirst($category->name) }}</td>
                                 <td>
+                                    {{ $category->getSubCategory->count() }}
+                                </td>
+                                <td>
                                     <img width="100" src="{{ asset('uploads/categories') }}/{{ $category->image }}" alt="">
                                 </td>
                                 <td>
@@ -72,6 +82,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('categories.delete', $category->id) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

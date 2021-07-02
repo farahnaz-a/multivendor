@@ -15,4 +15,9 @@ class Category extends Model
         return $this->belongsTo('App\Models\User', 'added_by', 'id');
     }
 
+    public function getSubCategory()
+    {
+        return $this->hasMany('App\Models\SubCategory');
+    }
+
 }

@@ -102,5 +102,27 @@ class CategoryController extends Controller
 
     }
 
+    /**
+     *  Destroy 
+     */
+    public function delete($id)
+    {
+        $data = Category::findOrFail($id); 
+
+        if($data->getSubCategory->count() == 0)
+        {
+            $img = public_path('uploads/categories/' . $data->image );
+            unlink($img); 
+
+            $data->delete(); 
+
+            return back()->withSuccess('Category deleted');
+        }
+        else 
+        {
+            return back()->withWarning('Category has active subcategories.');
+        }
+    }
+
 // END    
 }

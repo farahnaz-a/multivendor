@@ -21,7 +21,7 @@
 
             </div>
             <div class="card-body p-3">
-                <form action="{{ route('subcategories.store') }}" method="POST">
+                <form action="{{ route('subCategories.store') }}" method="POST">
                     @csrf
                     <div class="py-2">
                         <label for="name">Sub Category name</label>
@@ -63,13 +63,20 @@
                             <th>Category</th>
                             <th>Action</th>
                         </tr>
-                        @foreach ($subcategories as $subcategory)
+                        @foreach ($subcategories as $subCategory)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $subcategory->name }}</td>
-                                <td>{{ $subcategory->getCategory->name }}</td>
+                                <td>{{ $subCategory->name }}</td>
+                                <td>{{ $subCategory->getCategory->name }}</td>
                                 <td>
-                                    <a href=""></a>
+                                    <a href="{{ route('subCategories.edit', $subCategory->id) }}" class="btn float-left btn-sm btn-warning">Edit</a>
+
+                                    <form action="{{ route('subCategories.destroy', $subCategory->id) }}" method="POST"> 
+                                        {{ method_field('DELETE') }}
+                                        @csrf
+                                        <a href="{{ route('subCategories.destroy', $subCategory->id) }}" onclick="event.preventDefault();this.closest('form').submit();" class="float-right btn btn-sm btn-danger">Delete</a>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach

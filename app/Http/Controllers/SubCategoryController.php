@@ -60,9 +60,6 @@ class SubCategoryController extends Controller
 
         return back()->withSuccess('Sub category added successfully');
 
-
-
-
     }
 
     /**
@@ -84,7 +81,9 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('subcategories.edit', compact('subCategory', 'categories'));
     }
 
     /**
@@ -96,7 +95,19 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, SubCategory $subCategory)
     {
-        //
+        $request->validate([
+            'name'        => 'required', 
+            'category_id' => 'required',
+        ]);
+
+
+        $subCategory->name         = $request->name; 
+        $subCategory->category_id  = $request->category_id; 
+
+        $subCategory->save(); 
+
+        // return redirect('/admin/subCategories'); 
+        return redirect()->route('subCategories.index')->withSuccess('Category updated');
     }
 
     /**
@@ -107,6 +118,9 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subCategory)
     {
-        //
+        $subCategory->delete(); 
+
+        return back()->withSuccess('subcategory deleted');
+
     }
 }

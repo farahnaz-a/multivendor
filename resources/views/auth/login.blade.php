@@ -1,4 +1,4 @@
-{{-- <x-guest-layout>
+ {{-- <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -45,8 +45,7 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout> --}}
-
+</x-guest-layout>  --}}
 
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
 <!--  Last Published: Mon May 31 2021 22:17:14 GMT+0000 (Coordinated Universal Time)  -->

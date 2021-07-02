@@ -219,7 +219,7 @@
                     </a>
                 </li>
                 <li class=" nav-item">
-                    <a class="d-flex align-items-center" href="{{ route('subcategories.index') }}">
+                    <a class="d-flex align-items-center" href="{{ route('subCategories.index') }}">
                         <i data-feather="message-square"></i>
                         <span class="menu-title text-truncate" data-i18n="Chat">Sub Category</span>
                     </a>

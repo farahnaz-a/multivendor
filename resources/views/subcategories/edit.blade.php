@@ -2,7 +2,7 @@
 
 {{-- Title --}}
 @section('title')
-{{ config('app.name') }} | {{ ucfirst($category->name) }}
+{{ config('app.name') }} | {{ ucfirst($subCategory->name) }}
 @endsection
 
 {{-- Breadcrumb --}}
@@ -10,7 +10,7 @@
 <div class="breadcrumb-wrapper">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categories</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('subCategories.index') }}">Sub Categories</a></li>
         <li class="breadcrumb-item active"><a href="">Edit</a></li>
     </ol>
 </div>
@@ -23,7 +23,7 @@
     <div class="col-md-8 offset-md-2">
         <div class="card">
             <div class="card-header text-center">
-                <h3>Category Edit</h3>
+                <h3>sub Category Edit</h3>
 
                 @if ($errors->all())
                     @foreach ($errors->all() as $error)
@@ -40,24 +40,33 @@
 
             </div>
             <div class="card-body">
-                <form action="{{ route('categories.update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('subCategories.update', $subCategory->id) }}" method="POST" enctype="multipart/form-data">
+                    {{ method_field('PUT') }}
                     @csrf
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input name="name" id="name" value="{{ $category->name }}"  type="text" placeholder="Enter name" class="form-control">
+                    <div class="py-2">
+                        <label for="name">Sub Category name</label>
+                        <input name="name" id="name" value="{{ $subCategory->name }}"  type="text" placeholder="Enter Sub Category name" class="form-control">
+                        @error('name') 
+                        <small class="text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+                    <div class="py-2">
+                       <label for="category_id">Select Category</label>
+                       <select class="form-control" name="category_id" id="category_id">
+                           <option value="{{ $subCategory->category_id }}">{{ $subCategory->getCategory->name }}</option>
+                            @foreach ($categories as $category)
+                               @if($category->name != $subCategory->getCategory->name)
+                               <option  value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
+                               @endif
+                           @endforeach
+                       </select>
+                       @error('category_id') 
+                       <small class="text-danger"> {{ $message }} </small>
+                       @enderror
                     </div>
                     <div class="form-group">
-                        <label for="answer">Image</label>
-                        <input type="file" name="image" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <p>Existing Image : </p>
-                        <img src="{{ asset('uploads/categories') }}/{{ $category->image }}" width="100" alt="">
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="{{ $category->id }}">
                         <button class="btn btn-success" type="submit">Update</button>
-                        <a href="{{ route('categories.index') }}" class="btn btn-info" type="submit">Return Back</a>
+                        <a href="{{ route('subCategories.index') }}" class="btn btn-info" type="submit">Return Back</a>
                     </div>
                 </form>
             </div>
