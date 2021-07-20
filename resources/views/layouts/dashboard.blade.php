@@ -225,6 +225,14 @@
                     </a>
                 </li>
 
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Products</span></a>
+                    <ul class="menu-content">
+                        <li><a class="d-flex align-items-center" href="{{ route('products.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a></li>
+                        <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Preview</span></a></li>
+                        <li><a class="d-flex align-items-center" href="app-invoice-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a></li>
+                        <li><a class="d-flex align-items-center" href="{{ route('products.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add</span></a></li>
+                    </ul>
+                </li>
 
                 {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('faq.index') }}"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Faq</span></a></li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Calendar</span></a></li>

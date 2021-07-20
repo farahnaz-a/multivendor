@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         // SubCategoryController
         Route::resource('subCategories', SubCategoryController::class);
+
+        // ProductController 
+        Route::resource('products', ProductController::class);
 
 });
 
