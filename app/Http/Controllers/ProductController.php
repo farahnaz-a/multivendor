@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\ProductImage;
-use App\Models\SubCategory;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Str;
 use Image;
+use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\SubCategory;
+use App\Models\ProductImage;
+use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -160,5 +161,38 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    /**
+     *  Edit Multiple Image 
+     */
+    public function updateMultiple($id)
+    {
+        $product = Product::find($id);
+
+        return view('products.editMultiple', compact('product'));
+    }
+    /**
+     *  Replace Multiple Image 
+     */
+    public function replaceMultiple(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image',
+        ]);
+
+        $data = ProductImage::find($request->id);
+
+        $existing = public_path('uploads/multiple_images/' . $data->image); 
+        unlink($existing);
+
+        $multi_image = $request->image; 
+        $filename    = $data->image;
+        $location    = public_path('uploads/multiple_images/' . $filename);
+
+        Image::make($multi_image)->save($location);
+
+        return back()->withSuccess('Image updated');
+
     }
 }

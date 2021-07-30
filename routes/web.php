@@ -40,6 +40,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('subCategories', SubCategoryController::class);
 
         // ProductController 
+        Route::get('update-multiple-image/{id}/update', [ProductController::class, 'updateMultiple'])->name('update.multiple');
+        Route::post('replace-multiple-image/update', [ProductController::class, 'replaceMultiple'])->name('replace.multiple');
+        // Route::get('/product-multiple-image/edit', [ProductController::class, 'editMultiple'])->name('edit.multiple');
         Route::resource('products', ProductController::class);
 
 });
