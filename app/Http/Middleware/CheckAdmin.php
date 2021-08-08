@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class CheckRole
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,14 @@ class CheckRole
     {
         if(Auth::user()->role != 'admin')
         {
-            return redirect()->route('user.dashboard');
+            if(Auth::user()->role != 'medic')
+            {
+                return redirect()->route('user.dashboard');
+            }
+            else 
+            {
+                return redirect()->route('medic.dashboard');
+            }
         }
         return $next($request);
     }

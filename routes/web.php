@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\MedicController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -39,11 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
         // SubCategoryController
         Route::resource('subCategories', SubCategoryController::class);
 
-        // ProductController 
-        Route::get('update-multiple-image/{id}/update', [ProductController::class, 'updateMultiple'])->name('update.multiple');
-        Route::post('replace-multiple-image/update', [ProductController::class, 'replaceMultiple'])->name('replace.multiple');
-        // Route::get('/product-multiple-image/edit', [ProductController::class, 'editMultiple'])->name('edit.multiple');
-        Route::resource('products', ProductController::class);
+
 
 });
 
@@ -56,4 +53,17 @@ Route::group(['prefix' => 'user'], function () {
                 echo "user dashboard coming soon";
         })->name('user.dashboard');
 
+});
+
+// Medic Prefix 
+Route::group(['prefix' => 'medic'], function () {
+              // Medic dashboard
+        Route::get('/dashboard', [MedicController::class, 'index'])->name('medic.dashboard');  
+
+        // ProductController 
+        Route::post('get-sub-category', [ProductController::class, 'getsubcategory'])->name('getsub');
+        Route::get('update-multiple-image/{id}/update', [ProductController::class, 'updateMultiple'])->name('update.multiple');
+        Route::post('replace-multiple-image/update', [ProductController::class, 'replaceMultiple'])->name('replace.multiple');
+        // Route::get('/product-multiple-image/edit', [ProductController::class, 'editMultiple'])->name('edit.multiple');
+        Route::resource('products', ProductController::class);
 });

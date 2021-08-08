@@ -6,9 +6,11 @@ use Str;
 use Image;
 use Carbon\Carbon;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Auth;
 
 
 class ProductController extends Controller
@@ -20,7 +22,6 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('verified');
-        $this->middleware('checkAdmin');
     }
     /**
      * Display a listing of the resource.
@@ -42,7 +43,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('products.create', [
-            'subCategories' => SubCategory::orderBy('name', 'asc')->get(),
+            'categories' => Category::orderBy('name', 'asc')->get(),
         ]);
     }
 
@@ -193,6 +194,19 @@ class ProductController extends Controller
         Image::make($multi_image)->save($location);
 
         return back()->withSuccess('Image updated');
+
+    }
+
+    /**
+     *  Ajax Call 
+     */
+    public function getsubcategory(Request $request)
+    {
+       $subcategories = SubCategory::where('category_id', $request->category)->get(); 
+
+       $view = view('frontend.includes.subcategory', compact('subcategories')); 
+       $response = $view->render();
+       return response()->json(['success' => $response]); 
 
     }
 }

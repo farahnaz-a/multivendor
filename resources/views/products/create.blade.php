@@ -1,113 +1,109 @@
-@extends('layouts.dashboard')
+@extends('layouts.medic')
 
 {{-- Title --}}
 @section('title')
 {{ config('app.name') }} | Add Product
 @endsection
 
-{{-- Breadcrumb --}}
-@section('breadcrumb')
-<div class="breadcrumb-wrapper">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="{{ url('/') }}">Home</a></li>
-    </ol>
-</div>
-@endsection
 
 @section('content')
- 
- <div class="row">
-         
-    <div class="col-lg-12 col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Add Products</h4>
-                @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
-                @if (session('Warning'))
-                    <div class="alert alert-success">{{ session('Warning') }}</div>
-                @endif
-            </div>
-            <div class="card-body">
-                <form class="form form-vertical" action="{{ route('products.store') }}" enctype="multipart/form-data" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="name">Product Name</label>
-                                <input type="text" id="name" class="form-control" name="name" placeholder="Enter Product name">
-                                @error('name')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="name">Product description</label>
-                                <textarea name="description" class="form-control" placeholder="Enter product description"></textarea>
-                                @error('description')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="name">Product Price</label>
-                                <input type="text" id="price" class="form-control" name="price" placeholder="Enter Product price">
-                                @error('price')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="name">Select Category</label>
-                                <select name="subCategory_id" class="form-control">
-                                    <option value="">-Select category-</option>
-                                    @foreach ($subCategories as $item)
-                                    
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-
-                                    @endforeach
-                                </select>
-                                @error('subCategory_id')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="customFile">Product Image</label>
-                                <div class="custom-file">
-                                    <input type="file" name="image" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile"></label>
-                                </div>
-                                @error('image')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="customFile">Product Multiple Image</label>
-                                <div class="custom-file">
-                                    <input type="file" name="multiple_image[]" multiple class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile"></label>
-                                </div>
-                                @error('multiple_image')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary mr-1 waves-effect waves-float waves-light">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="dashboard-main-content">
+    <div class="dashboard-header-wrap">
+      <h2 class="dashboard">Add a Product</h2>
     </div>
- </div>
+    <div class="module">
+      <div class="w-form">
+        <form id="email-form" class="create-course-form" action="{{ route('products.store') }}" enctype="multipart/form-data" method="POST">
+            @csrf
+            <label for="Product-Name" class="field-label">Product Name</label>
+            <input type="text" class="course-text-input w-input" maxlength="256" name="name" data-name="Product Name" placeholder="" id="Product-Name" required="">
+
+            @error('name')
+                <small style="color: red">{{ $message }}</small>
+            @enderror
+
+            <label for="Categories-Name" class="field-label">Categories</label>
+            <select name="category_id" class="course-text-input w-input" id="category">
+                <option value="">Select Category</option>
+                @foreach ($categories as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+
+            <label for="Categories-Name" class="field-label">Sub categories</label>
+            <select name="category_id" class="course-text-input w-input" id="subcategory">
+                <option value="">Select sub category</option>
+            </select>
+
+
+            <label for="Price" class="field-label">Price</label>
+            <input type="text" class="course-text-input w-input" maxlength="256" name="price" data-name="Price" placeholder="$" id="Price" required="">
+            @error('price')
+            <small style="color: red">{{ $message }}</small>
+             @enderror
+
+
+            <label for="email" class="field-label">Product Description</label>
+            <textarea name="description" maxlength="5000" id="field" required="" class="description-input w-input"></textarea>
+
+            @error('description')
+            <small style="color: red">{{ $message }}</small>
+        @enderror
+
+
+          <div class="product-wrap">
+            <div class="settings-label">Product Image</div>
+            <a onclick="event.preventDefault(); document.getElementById('image').click()" class="back-button upload-videos w-button">Upload</a>
+            <input id="image" type="file" name="image" style="display: none;">
+            <p class="paragraph-small">You can upload images up to 400x400px.</p>
+            @error('image')
+            <small style="color: red">{{ $message }}</small>
+             @enderror
+
+          </div><input type="submit" value="Submit" data-wait="Please wait..." class="course-form-submit-button w-button">
+        </form>
+        <div class="w-form-done">
+          <div>Thank you! Your submission has been received!</div>
+        </div>
+        <div class="w-form-fail">
+          <div>Oops! Something went wrong while submitting the form.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
  
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $("#category").on("change", function(){
+               
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                let category = $("#category").val(); 
+
+                $.ajax({
+
+                  url  : "{{ route('getsub') }}",
+                  type : "POST", 
+                  data : {
+                      category : category
+                  },
+                  success : function(data)
+                  {
+                      $("#subcategory").html(data.success);
+                  }
+
+                });
+
+
+            });
+        });
+    </script>
 @endsection
