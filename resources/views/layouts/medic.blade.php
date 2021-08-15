@@ -35,10 +35,10 @@
             <a href="{{ route('medic.dashboard') }}" aria-current="page" class="sidebar-link w-inline-block w--current"><img src="{{ asset('frontend_assets/images/Home.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">Dashboard</div>
             </a>
-            <a href="dashboard/my-courses.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/online-course.svg') }}" loading="lazy" alt="" class="sidebar-icon">
+            <a href="{{ route('medic.items') }}" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/online-course.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">My Courses</div>
             </a>
-            <a href="dashboard/create-a-course.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/pen.svg') }}" loading="lazy" alt="" class="sidebar-icon">
+            <a href="{{ route('course.create') }}" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/pen.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">Create a Course</div>
             </a>
             <a href="dashboard/my-order.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/order.svg') }}" loading="lazy" alt="" class="sidebar-icon">
@@ -190,7 +190,10 @@
                   <a href="#" class="profile-menu-link w-dropdown-link">Privacy Policy</a>
                   <a href="#" class="profile-menu-link w-dropdown-link">Licenses</a>
                   <div class="menu-divider"></div>
-                  <a href="#" class="profile-menu-link w-dropdown-link">Log Out</a>
+                  <form action="{{ route('logout') }}" method="POST">
+                    @csrf 
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();" class="profile-menu-link w-dropdown-link">Log Out</a>
+                  </form>
                 </nav>
               </div>
             </div>

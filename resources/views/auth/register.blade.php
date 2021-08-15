@@ -185,6 +185,21 @@
                                         @enderror
                                         </div>
                                 </div>
+                                    <div class="text-field-box _2">
+                                        <label for="Password"
+                                            class="field-label-2">Register as</label>
+                                            <select
+                                            class="sign-up-field w-input" maxlength="256" name="role"
+                                            required="">
+                                            <option value="">Register as</option>
+                                            <option value="user">Customer</option>
+                                            <option value="medic">Medic</option>
+                                           </select>
+                                            @error('role')
+                                            <small style="color:red;">{{ $message }}</small>
+                                        @enderror
+                                        </div>
+                                </div>
                                 <label class="w-checkbox checkbox-field-2">
                                     <div class="w-checkbox-input w-checkbox-input--inputType-custom checkbox-2"></div>
                                     <input type="checkbox" id="Checkbox" name="Checkbox" data-name="Checkbox"

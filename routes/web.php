@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MedicController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\FaqController;
-use App\Http\Controllers\MedicController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
-use Illuminate\Support\Facades\Route;
 
 
 // Frontend Controller
@@ -59,6 +60,7 @@ Route::group(['prefix' => 'user'], function () {
 Route::group(['prefix' => 'medic'], function () {
               // Medic dashboard
         Route::get('/dashboard', [MedicController::class, 'index'])->name('medic.dashboard');  
+        Route::get('/my-items', [MedicController::class, 'myItems'])->name('medic.items');
 
         // ProductController 
         Route::post('get-sub-category', [ProductController::class, 'getsubcategory'])->name('getsub');
@@ -66,4 +68,8 @@ Route::group(['prefix' => 'medic'], function () {
         Route::post('replace-multiple-image/update', [ProductController::class, 'replaceMultiple'])->name('replace.multiple');
         // Route::get('/product-multiple-image/edit', [ProductController::class, 'editMultiple'])->name('edit.multiple');
         Route::resource('products', ProductController::class);
+
+        // CourseController 
+        Route::get('/course-create', [CourseController::class, 'create'])->name('course.create');
+
 });

@@ -8,6 +8,11 @@
 
 @section('content')
 <div class="dashboard-main-content">
+
+    @if(session('success'))
+    <h5 style="color: green">{{ session('success') }}</h5>
+    @endif
+
     <div class="dashboard-header-wrap">
       <h2 class="dashboard">Add a Product</h2>
     </div>
@@ -29,11 +34,17 @@
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>
+            @error('category_id')
+            <small style="color: red">{{ $message }}</small>
+             @enderror
 
             <label for="Categories-Name" class="field-label">Sub categories</label>
-            <select name="category_id" class="course-text-input w-input" id="subcategory">
+            <select name="subCategory_id" class="course-text-input w-input" id="subcategory">
                 <option value="">Select sub category</option>
             </select>
+            @error('subCategory_id')
+            <small style="color: red">{{ $message }}</small>
+             @enderror
 
 
             <label for="Price" class="field-label">Price</label>
