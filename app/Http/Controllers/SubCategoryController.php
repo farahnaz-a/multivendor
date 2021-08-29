@@ -26,7 +26,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        return view('subcategories.index', [
+        return view('subCategories.index', [
             'categories'     => Category::orderBy('name', 'asc')->get(),
             'subcategories'  => SubCategory::latest()->get(),
         ]);

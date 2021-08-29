@@ -5,11 +5,18 @@
 {{ config('app.name') }} |  Product List
 @endsection
 
+{{-- Active Menu --}}
+@section('productsIndex')
+    active
+@endsection
+
 {{-- Breadcrumb --}}
 @section('breadcrumb')
 <div class="breadcrumb-wrapper">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="">Products</a></li>
+        <li class="breadcrumb-item active"><a href="">Index</a></li>
     </ol>
 </div>
 @endsection
@@ -19,11 +26,11 @@
 <div class="col-lg-12 col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">product</h4>
+            <h4 class="card-title">Products</h4>
         </div>
         <div class="card-body">
             <p class="card-text">
-                List of all the product
+                List of all the products
             </p>
         </div>
         <div class="table-responsive">
