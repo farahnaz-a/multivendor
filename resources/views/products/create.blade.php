@@ -5,7 +5,23 @@
 {{ config('app.name') }} | Add Product
 @endsection
 
+{{-- Active Menu --}}
+@section('productsCreate')
+    active
+@endsection
 
+{{-- Breadcrumb --}}
+@section('breadcrumb')
+<div class="breadcrumb-wrapper">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="">Products</a></li>
+        <li class="breadcrumb-item active"><a href="">Create</a></li>
+    </ol>
+</div>
+@endsection
+
+{{-- Main Content --}}
 @section('content')
 <div class="dashboard-main-content">
 

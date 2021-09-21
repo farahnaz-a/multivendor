@@ -5,6 +5,12 @@
 {{ config('app.name') }} | {{ ucfirst($category->name) }}
 @endsection
 
+{{-- Menu Active --}}
+@section('categories')
+    active
+@endsection
+
+
 {{-- Breadcrumb --}}
 @section('breadcrumb')
 <div class="breadcrumb-wrapper">

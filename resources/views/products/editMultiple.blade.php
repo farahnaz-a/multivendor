@@ -14,6 +14,7 @@
 </div>
 @endsection
 
+{{-- Main content --}}
 @section('content')
  
  <div class="row">
