@@ -27,7 +27,7 @@
     <div data-collapse="medium" data-animation="over-left" data-duration="400" role="banner" class="sidebar-nav w-nav">
       <div class="dashboard-sidebar">
         <div class="logo-wrapper">
-          <a href="index.html" class="logo-link-dashboard w-inline-block"><img src="{{ asset('frontend_assets/images/medic-logo.png') }}" loading="lazy" sizes="(max-width: 991px) 100vw, 40px" srcset="images/medic-logo-p-500.png 500w, images/medic-logo.png 858w" alt="" class="dashboard-logo"></a><img src="images/Collapse-arrow.svg" loading="lazy" data-w-id="2dccbe0e-38a3-bcf8-3ca2-1f0ff60f9943" alt="" class="arrow-colaps">
+          <a href="{{ url('/') }}" class="logo-link-dashboard w-inline-block"><img src="{{ asset('frontend_assets/images/medic-logo.png') }}" loading="lazy" sizes="(max-width: 991px) 100vw, 40px" srcset="images/medic-logo-p-500.png 500w, images/medic-logo.png 858w" alt="" class="dashboard-logo"></a><img src="images/Collapse-arrow.svg" loading="lazy" data-w-id="2dccbe0e-38a3-bcf8-3ca2-1f0ff60f9943" alt="" class="arrow-colaps">
         </div>
         <div class="sidebar-menu">
           <div class="sidebar-menu-section">
@@ -47,15 +47,15 @@
             <a href="{{ route('products.create') }}" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/plus.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">Add a Products</div>
             </a>
-            <a href="dashboard/emails.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/EnvelopeOpen.svg') }}" loading="lazy" alt="" class="sidebar-icon">
+            {{-- <a href="dashboard/emails.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/EnvelopeOpen.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">Emails</div>
-            </a>
+            </a> --}}
           </div>
           <div class="sidebar-menu-section">
-            <a href="dashboard/my-profile.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/profile-user-1.svg') }}" loading="lazy" alt="" class="sidebar-icon">
+            <a href="{{ route('medic.profile') }}" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/profile-user-1.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">My Profile</div>
             </a>
-            <a href="dashboard/settings.html" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/settings.svg') }}" loading="lazy" alt="" class="sidebar-icon">
+            <a href="{{ route('medic.settings') }}" class="sidebar-link w-inline-block"><img src="{{ asset('frontend_assets/images/settings.svg') }}" loading="lazy" alt="" class="sidebar-icon">
               <div class="sidebar-link-text">Seetings</div>
             </a>
           </div>
@@ -104,7 +104,7 @@
           <div class="nav-wrapper">
             <form action="/search" class="search w-form"><input type="submit" value="" class="search-button w-button"><input type="search" class="search-input w-input" maxlength="256" name="query" placeholder="Search" id="search" required=""></form>
             <div class="profile-wrap">
-              <a href="courses.html" class="plan-button w-button">Upgrade Plan</a>
+              {{-- <a href="courses.html" class="plan-button w-button">Upgrade Plan</a> --}}
               <div data-hover="" data-delay="0" class="nav-dropdown w-dropdown">
                 <div class="nav-dropdown-toggle w-dropdown-toggle">
                     

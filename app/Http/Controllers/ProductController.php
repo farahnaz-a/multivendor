@@ -95,28 +95,28 @@ class ProductController extends Controller
        $data->save(); 
 
 
-    //    if($request->multiple_image)
-    //    {
-    //        $counter = 1;
-    //         foreach($request->file('multiple_image') as $image)
-    //         {
-    //            $multi_image = $image; 
-    //            $filename    = $data->id. '-'. $counter  . '.' .$image->extension();
-    //            $location    = public_path('uploads/multiple_images/' . $filename);
+       if($request->multiple_image)
+       {
+           $counter = 1;
+            foreach($request->file('multiple_image') as $image)
+            {
+               $multi_image = $image; 
+               $filename    = $data->id. '-'. $counter  . '.' .$image->extension();
+               $location    = public_path('uploads/multiple_images/' . $filename);
 
-    //            Image::make($multi_image)->save($location);
+               Image::make($multi_image)->save($location);
 
-    //            ProductImage::create([
-    //             'product_id' => $data->id, 
-    //             'image'      => $filename, 
-    //             'created_at' => Carbon::now(),
-    //            ]);
+               ProductImage::create([
+                'product_id' => $data->id, 
+                'image'      => $filename, 
+                'created_at' => Carbon::now(),
+               ]);
 
 
 
-    //            $counter++;
-    //         }
-    //    }
+               $counter++;
+            }
+       }
 
     return back()->withSuccess('Product Added');
 

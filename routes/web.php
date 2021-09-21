@@ -13,6 +13,10 @@ use App\Http\Controllers\SubCategoryController;
 
 // Frontend Controller
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/products-courses', [FrontendController::class, 'products']);
+Route::get('/product-details/{id}', [FrontendController::class, 'productDetails'])->name('product.details');
+Route::get('/course-details/{id}', [FrontendController::class, 'courseDetails'])->name('course.details');
+Route::get('/about-us', [FrontendController::class, 'about'])->name('frontend.about');
 
 
 
@@ -61,6 +65,8 @@ Route::group(['prefix' => 'medic'], function () {
               // Medic dashboard
         Route::get('/dashboard', [MedicController::class, 'index'])->name('medic.dashboard');  
         Route::get('/my-items', [MedicController::class, 'myItems'])->name('medic.items');
+        Route::get('/my-settings', [MedicController::class, 'mySettings'])->name('medic.settings');
+        Route::get('/my-profile', [MedicController::class, 'myProfile'])->name('medic.profile');
 
         // ProductController 
         Route::post('get-sub-category', [ProductController::class, 'getsubcategory'])->name('getsub');
@@ -71,5 +77,6 @@ Route::group(['prefix' => 'medic'], function () {
 
         // CourseController 
         Route::get('/course-create', [CourseController::class, 'create'])->name('course.create');
+        Route::post('/course-store', [CourseController::class, 'store'])->name('course.store');
 
 });

@@ -9,7 +9,6 @@
 
 <div class="dashboard-header-wrap">
     <h2 class="dashboard">Dashboard</h2>
-    <a href="#" class="edit-button w-button">Edit Dashboard</a>
   </div>
   <div class="db-top-grid">
     <div class="single-block blue">
@@ -22,7 +21,7 @@
     </div>
     <div class="single-block">
       <div class="grid-heading">Open Courses</div>
-      <div class="number">22</div>
+      <div class="number">{{ \App\Models\Course::where('medic_id', Auth::id())->get()->count() }}</div>
     </div>
     <div class="single-block">
       <div class="grid-heading">On Hold</div>
