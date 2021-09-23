@@ -32,7 +32,13 @@
                   </div>
                 </a>
                 <div class="cart-button-wrapper">
-                  <a href="cart.html" class="cart-button square w-button">Add to Cart</a>
+                  <form method="POST" action="{{ route('cart.store') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="qty" value="1">
+                    <input type="hidden" name="amount" value="{{ $product->price }}">
+                  <a href="{{ route('cart.store') }}" onclick="event.preventDefault();this.closest('form').submit();" class="cart-button square w-button">Add to Cart</a>
+                  </form>
                 </div>
               </div>
               @endforeach
@@ -51,9 +57,15 @@
                   <div class="price">{{ $item->price }} €</div>
                 </div>
               </a>
+              <form method="POST" action="{{ route('cart.store') }}">
+                @csrf
+                <input type="hidden" name="course_id" value="{{ $item->id }}">
+                <input type="hidden" name="qty" value="1">
+                <input type="hidden" name="amount" value="{{ $item->price }}">
               <div class="cart-button-wrapper">
-                <a href="cart.html" class="cart-button square w-button">Add to Cart</a>
+                <a href="{{ route('cart.store') }}" onclick="event.preventDefault();this.closest('form').submit();" class="cart-button square w-button">Add to Cart</a>
               </div>
+              </form>
             </div>
             @endforeach
           </div>

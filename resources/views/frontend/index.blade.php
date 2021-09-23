@@ -14,11 +14,17 @@
                     <a href="{{ route('course.details', $item->id) }}"><img src="{{ asset('uploads/course/thumbnail') }}/{{ $item->thumbnail }}" alt=""></a>
                   </div>
                   <h3>{{ $item->name }}</h3>
-                  <a href="#" class="button top-margin w-inline-block">
+                  <form method="POST" action="{{ route('cart.store') }}">
+                  @csrf
+                  <input type="hidden" name="course_id" value="{{ $item->id }}">
+                  <input type="hidden" name="qty" value="1">
+                  <input type="hidden" name="amount" value="{{ $item->price }}">
+                  <a href="{{ route('cart.store') }}" onclick="event.preventDefault();this.closest('form').submit();" class="button top-margin w-inline-block">
                     <div class="button-wrap">
                       <div>Direct verder met bestellen</div>
                     </div>
                   </a>
+                  </form>
                 </div>
                 {{--  <div class="plan-wrap">
                   <div class="left-block">
@@ -192,11 +198,17 @@
           <a href="{{ route('product.details', $item->id) }}">
             <img src="{{ asset('uploads/products') }}/{{ $item->image }}" loading="lazy" alt="" class="medicine">
           </a>
-          <a href="" class="button green w-inline-block">
+          <form method="POST" action="{{ route('cart.store') }}">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $item->id }}">
+            <input type="hidden" name="qty" value="1">
+            <input type="hidden" name="amount" value="{{ $item->price }}">
+          <a href="{{ route('cart.store') }}" onclick="event.preventDefault();this.closest('form').submit();" class="button green w-inline-block">
             <div class="cart-button-wrap"><img src="{{ asset('frontend_assets/images/shopping-cart-1.svg') }}" loading="lazy" alt="" class="cart">
               <div>In winkelwagen</div>
             </div>
           </a>
+          </form>
         </div>
         @endforeach
         {{--  <div id="w-node-_34a62009-c4b8-b083-9720-3374a5fda029-2e828b5d" class="grid-block"><img src="{{ asset('frontend_assets/images/PL1.jpg') }}" loading="lazy" alt="" class="medicine">

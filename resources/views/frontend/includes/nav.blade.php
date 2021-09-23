@@ -2,7 +2,7 @@
     <div class="navbar">
       <div class="navwrapper">
         <div data-w-id="869f715c-9209-0b63-210e-1896e262a1fa" class="navlinkwrapper">
-          <a data-w-id="869f715c-9209-0b63-210e-1896e262a1fb" href="index.html" aria-current="page" class="nav-link w-inline-block w--current">
+          <a data-w-id="869f715c-9209-0b63-210e-1896e262a1fb" href="{{ url('/') }}" aria-current="page" class="nav-link w-inline-block w--current">
             <div class="nav-wrap">
               <div class="round-wrap"><img src="{{ asset('frontend_assets/images/brain.svg') }}" loading="lazy" alt="" class="round-image"></div>
               <div class="nav-block">

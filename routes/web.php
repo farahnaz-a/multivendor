@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MedicController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SubCategoryController;
 
@@ -18,6 +20,18 @@ Route::get('/product-details/{id}', [FrontendController::class, 'productDetails'
 Route::get('/course-details/{id}', [FrontendController::class, 'courseDetails'])->name('course.details');
 Route::get('/about-us', [FrontendController::class, 'about'])->name('frontend.about');
 
+// Cart Controller 
+Route::any('/cart/store', [CartController::class, 'store'])->name('cart.store');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/{coupon_name}', [CartController::class, 'index']);
+// Route::any('/cart/store', 'App\Http\Controllers\CartController@store')->name('cart.store');
+Route::get('/cart/{cart_id}/delete', [CartController::class, 'delete'])->name('cart.delete');
+Route::post('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.custom.update');
+
+
+// Checkout Controller 
+Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index'); 
+Route::post('/order', [CheckoutController::class, 'order'])->name('order.store');
 
 
 // Admin Prefix 
@@ -55,7 +69,7 @@ Route::group(['prefix' => 'user'], function () {
         // User dashboard
         Route::get('/dashboard', function () {
 
-                echo "user dashboard coming soon";
+                return redirect('/');
         })->name('user.dashboard');
 
 });
