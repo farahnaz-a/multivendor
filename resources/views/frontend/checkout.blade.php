@@ -12,16 +12,19 @@
                 <label for="Email-3" class="field-label">* Required</label>
             </div>
               <div class="info-wrap-wf"><label for="email" class="field-label">Email *</label>
-                <input type="email" class="input w-input" maxlength="256" name="email" value="{{ Auth::user()->email }}" required></div>
+                <input type="email" id="email" class="input w-input" maxlength="256" name="email" value="{{ Auth::user()->email }}" required></div>
               <div class="info-wrap top-space"><label for="Email-3" class="checkout-title">Shipping Address</label><label for="Email-3" class="field-label">* Required</label></div>
               <div class="info-wrap-wf"><label for="Name" class="field-label">Full Name *</label>
-                <input type="text" class="input w-input" maxlength="256" name="name" value="{{ Auth::user()->name }}" placeholder="" id="Name" required>
-                <label for="Name-2" class="field-label">Street Address *</label><input type="text" class="input w-input" maxlength="256" name="Name-3" data-name="Name 3" placeholder="" id="Name-3" required="">
+                <input type="text" class="input w-input" id="name" maxlength="256" name="name" value="{{ Auth::user()->name }}" placeholder=""  required>
+
+
+
+                <label for="Name-2" class="field-label">Street Address *</label><input type="text" class="input w-input" maxlength="256" name="address" placeholder="" id="address" required="">
                 <div class="checkout-grid">
-                  <div><label for="Name-4" class="field-label">City *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                  <div><label for="Name-4" class="field-label">State/Province</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                  <div><label for="Name-4" class="field-label">Zip/Postal Code *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                </div><label for="Name-2" class="field-label">Country *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required="">
+                  <div><label for="Name-4" class="field-label">City *</label><input type="text" class="input w-input" maxlength="256" name="city"  placeholder="" id="city" required=""></div>
+                  <div><label for="Name-4" class="field-label">State/Province</label><input type="text" class="input w-input" maxlength="256" name="state"  placeholder="" id="state" required=""></div>
+                  <div><label for="Name-4" class="field-label">Zip/Postal Code *</label><input type="text" class="input w-input" maxlength="256" name="zip_code" data-name="Name 2" placeholder="" id="zip_code" required=""></div>
+                </div><label for="Name-2" class="field-label">Country *</label><input type="text" class="input w-input" maxlength="256" name="country" placeholder="" id="country" required="">
               </div>
 
               {{-- <div class="info-wrap top-space"><label for="Email-3" class="checkout-title">Shipping Method</label></div>
@@ -37,22 +40,23 @@
 
 
 
-
-              <div class="info-wrap top-space"><label for="Email-3" class="checkout-title">Payment Info<br></label><label for="Email-3" class="field-label">* Required</label></div>
+{{-- 
+        <div class="info-wrap top-space"><label for="Email-3" class="checkout-title">Payment Info<br></label><label for="Email-3" class="field-label">* Required</label></div>
               <div class="info-wrap-wf"><label for="Name-5" class="field-label">Card Number *</label><input type="text" class="input w-input" maxlength="256" name="Name-3" data-name="Name 3" placeholder="" id="Name-3" required="">
                 <div class="checkout-grid-2">
                   <div><label for="Name-5" class="field-label">Expiration Date *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
                   <div><label for="Name-5" class="field-label">Security Code *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                </div><label class="w-checkbox payment-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"><span class="w-form-label">Billing address same as shipping</span></label>
-              </div>
+                </div>
+                <label class="w-checkbox payment-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"><span class="w-form-label">Billing address same as shipping</span></label>
+              </div>  --}}
               <div class="info-wrap top-space"><label for="Email-3" class="checkout-title">Billing Address<br></label><label for="Email-3" class="field-label">* Required</label></div>
-              <div class="info-wrap-wf"><label for="Name-4" class="field-label">Full Name *</label><input type="text" class="input w-input" maxlength="256" name="Name-3" data-name="Name 3" placeholder="" id="Name-3" required=""><label for="Name-4" class="field-label">Street Address *</label><input type="text" class="input w-input" maxlength="256" name="Name-3" data-name="Name 3" placeholder="" id="Name-3" required=""><input type="text" class="input w-input" maxlength="256" name="Name-3" data-name="Name 3" placeholder="" id="Name-3" required="">
+              <div class="info-wrap-wf"><label for="Name-4" class="field-label">Full Name *</label><input type="text" class="input w-input" maxlength="256" name="billing_name" placeholder="" id="billing_name" required=""><label for="Name-4" class="field-label">Street Address *</label><input type="text" class="input w-input" maxlength="256" name="billing_address"  placeholder="" id="billing_address" required="">
                 <div class="checkout-grid">
-                  <div><label for="Name-4" class="field-label">City *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                  <div><label for="Name-4" class="field-label">State/Province</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                  <div><label for="Name-4" class="field-label">Zip/Postal Code *</label><input type="text" class="input w-input" maxlength="256" name="Name-2" data-name="Name 2" placeholder="" id="Name-2" required=""></div>
-                </div><label for="Name-4" class="field-label">Country *</label><input type="text" class="input w-input" maxlength="256" name="Name-3" data-name="Name 3" placeholder="" id="Name-3" required=""><label class="w-checkbox payment-checkbox"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input"><span class="w-form-label">Billing address same as shipping</span></label>
-              </div>
+                  <div><label for="Name-4" class="field-label">City *</label><input type="text" class="input w-input" maxlength="256" name="billing_city" data-name="Name 2" placeholder="" id="billing_city" required=""></div>
+                  <div><label for="Name-4" class="field-label">State/Province</label><input type="text" class="input w-input" maxlength="256" name="billing_state" placeholder="" id="billing_state" required=""></div>
+                  <div><label for="Name-4" class="field-label">Zip/Postal Code *</label><input type="text" class="input w-input" maxlength="256" name="billing_zip_code" placeholder="" id="billing_zip_code" required=""></div>
+                </div><label for="Name-4" class="field-label">Country *</label><input type="text" class="input w-input" maxlength="256" name="billing_country" placeholder="" id="billing_country" required="">
+              </div><label class="w-checkbox payment-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input"><span class="w-form-label">Billing address same as shipping</span></label>
             </div>
             <div class="checkout-left-wrap">
               <div class="div-block">
@@ -108,4 +112,43 @@
         </div>
       </div>
 
+@endsection
+
+@section('js')
+   <script>
+     $(document).ready(function(){
+      $("#checkbox").change(function(){
+        if(this.checked) {
+        //Do stuff
+    
+         let name = $("#name").val();
+         let email = $("#email").val(); 
+         let address = $("#address").val(); 
+         let city   = $("#city").val(); 
+         let state   = $("#state").val(); 
+         let zip_code = $("#zip_code").val(); 
+         let country = $("#country").val(); 
+
+          $("#billing_name").val(name);
+          $("#billing_email").val(email);
+          $("#billing_address").val(address);
+          $("#billing_city").val(city);
+          $("#billing_zip_code").val(zip_code);
+          $("#billing_country").val(country);
+          $("#billing_state").val(state);
+
+        }
+        else 
+        {
+          $("#billing_name").val('');
+          $("#billing_email").val('');
+          $("#billing_address").val('');
+          $("#billing_city").val('');
+          $("#billing_zip_code").val('');
+          $("#billing_country").val('');
+        }
+
+      });
+     });  
+   </script>
 @endsection
