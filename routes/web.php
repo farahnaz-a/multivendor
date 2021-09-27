@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\StripePaymentController;
 
 
 // Frontend Controller
@@ -30,6 +31,8 @@ Route::post('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.c
 
 
 // Checkout Controller 
+Route::get('stripe', [StripePaymentController::class, 'stripe']);
+Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index'); 
 Route::post('/order', [CheckoutController::class, 'order'])->name('order.store');
 

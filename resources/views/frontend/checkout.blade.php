@@ -6,7 +6,8 @@
     <div class="checkout-section">
         <h1 class="checkout-heading">Checkout</h1>
         <div class="checkout-form w-form">
-          <form id="email-form" name="email-form" data-name="Email Form" class="checkout">
+          <form id="email-form" action="{{ route('order.store') }}" method="POST" class="checkout">
+            @csrf
             <div class="checkout-right-wrap">
               <div class="info-wrap"><label for="Email-2" class="checkout-title">Customer Info</label>
                 <label for="Email-3" class="field-label">* Required</label>

@@ -37,7 +37,13 @@
         @endauth
       </div>
    @endif
-
+ 
+ @if(session('success'))
+ <div style="text-align:center; color: green;">
+  <p>{{ session('success') }}</p>
+</div>
+ @endif
+    
       @yield('content')
 
   
