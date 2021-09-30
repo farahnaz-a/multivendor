@@ -12,7 +12,14 @@ class CartController extends Controller
 
     public function index($coupon_name = "")
     {
-       return view('frontend.cart.index');
+       if(cartItems()->count() > 0)
+       {
+        return view('frontend.cart.index');
+       }
+       else 
+       {
+         return back()->withSuccess('Your cart is empty. Please add some products to view the cart');
+       }
     }
 
 

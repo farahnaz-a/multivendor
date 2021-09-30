@@ -12,7 +12,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\StripePaymentController;
-
+use App\Http\Controllers\UserController;
 
 // Frontend Controller
 Route::get('/', [FrontendController::class, 'index']);
@@ -70,10 +70,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'user'], function () {
 
         // User dashboard
-        Route::get('/dashboard', function () {
-
-                return redirect('/');
-        })->name('user.dashboard');
+        Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
 
 });
 

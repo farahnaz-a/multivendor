@@ -200,14 +200,11 @@
                                         @enderror
                                         </div>
                                 </div>
-                                <label class="w-checkbox checkbox-field-2">
-                                    <div class="w-checkbox-input w-checkbox-input--inputType-custom checkbox-2"></div>
-                                    <input type="checkbox" id="Checkbox" name="Checkbox" data-name="Checkbox"
-                                        required style="opacity:0;position:absolute;z-index:-1"><span for="Checkbox"
-                                        class="terms-text w-form-label">I agree to the <a href="#" class="link-4">Terms
-                                            &amp; Conditions</a> and <a href="#" class="link-4">Privacy
-                                            Policy</a></span>
-                                </label><input type="submit" value="Create an Account" data-wait="Please wait..."
+                                    {{-- <div class="w-checkbox-input w-checkbox-input--inputType-custom checkbox-2"></div> --}}
+                                     {{-- <input style="display: inline-block;" type="checkbox" id="checkbox" name="checkbox">
+                                     <label for="checkbox">I agree to the terms & conditions.</label> --}}
+                               
+                                <input type="submit" value="Create an Account" data-wait="Please wait..."
                                     class="register-button w-button">
                             </form>
                             <div class="success-message w-form-done">

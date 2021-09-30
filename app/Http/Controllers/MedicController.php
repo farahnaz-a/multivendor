@@ -23,7 +23,15 @@ class MedicController extends Controller
      */
     public function index()
     {
-        return view('medic.index');
+        if(Auth::user()->role == 'medic')
+        {
+            
+            return view('medic.index');
+       }
+       else 
+       {
+           return back()->withSuccess('You do not have permission to access this page');
+       }
     }
 
     /**
@@ -33,7 +41,14 @@ class MedicController extends Controller
     {
         $products = Product::where('medic_id', Auth::id())->orderBy('id', 'desc')->get();
         $videos   = Course::where('medic_id', Auth::id())->orderBy('id', 'desc')->get();
-        return view('medic.items', compact('products', 'videos'));
+        if(Auth::user()->role == 'medic')
+        {
+            return view('medic.items', compact('products', 'videos'));
+        }
+        else 
+        {
+            return back()->withSuccess('You do not have permission to access this page');
+        }
     }
 
     /**
@@ -41,7 +56,15 @@ class MedicController extends Controller
      */
     public function mySettings()
     {
-        return view('medic.settings');
+        if(Auth::user()->role == 'medic')
+        {
+        
+            return view('medic.settings');
+        }
+        else 
+        {
+            return back()->withSuccess('You do not have permission to access this page');
+        }
     }
 
     /**
@@ -49,6 +72,14 @@ class MedicController extends Controller
      */
     public function myProfile()
     {
-        return view('medic.profile');
+        if(Auth::user()->role == 'medic')
+        {
+            return view('medic.profile');
+        
+        }
+        else 
+        {
+            return back()->withSuccess('You do not have permission to access this page');
+        }
     }
 }

@@ -25,9 +25,6 @@
 <body>
   
 <div class="container">
-  
-    <h1>Laravel 8 - Stripe Payment Gateway Integration Example <br/> ItSolutionStuff.com</h1>
-  
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
